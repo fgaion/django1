@@ -1,0 +1,15 @@
+.idea
+*.sqlite3
+venv
+0-*.txt
+*.pyc
+.vscode
+.env
+uwsgi.ini
+uwsgi_params
+local_settings.py
+udemyCertificado
+*.bak
+*.dat
+*.pid
+*.dit
