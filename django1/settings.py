@@ -21,15 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'am0l+sma(fm%-0ltazm)^t3n*_i9_an7zzc08$(nfkls9bhmhm'
+# SECRET_KEY = ver arquivo .env
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG com valor True = modo desenvolvimento - usa STATIC_URL
 # DEBUG com valor False = modo produção - usa STATIC_ROOT
 #DEBUG = True
-DEBUG = False
+#DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','3.139.38.234','187.87.242.189']
+from decouple import config
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = ['localhost','192.168.1.12',
+                 'teste.fgaion.com.br','3.139.38.234','187.87.242.189']
 
 
 # Application definition
@@ -128,5 +133,8 @@ STATIC_URL = '/static/'
 
 # usado durante a produção
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LOGOUT_REDIRECT_URL = 'index'
