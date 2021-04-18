@@ -4,15 +4,17 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 
-from core.models import Produto
+from core.models import Produto, Cliente
 
 def index(request):
     # print(request) ou print(dir(request)) ou print(request.headers)
     produtos = Produto.objects.all()
+    clientes = Cliente.objects.all()
     context = {
         'curso': 'Programação Web com Django Framework',
-        'outro': 'Django é massa!',
-        'produtos': produtos
+        'outro': 'Projeto simples com duas classes: Produto e Cliente',
+        'produtos': produtos,
+        'clientes': clientes
     }
     return render(request, 'index.html',context)
 
@@ -27,6 +29,16 @@ def produto(request, pk):
         'produto': prod
     }
     return render(request, 'produto.html', context)
+
+def cliente(request, pk):
+    # prod = Produto.objects.get(id=pk)
+    cli = get_object_or_404(Cliente, id=pk)
+
+    context = {
+        'cliente': cli
+    }
+    return render(request, 'cliente.html', context)
+
 
 #As funções abaixo somente funcionam no modo de produção (DEBUG=False)
 def error404(request, ex):

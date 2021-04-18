@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+    <h1>Cliente</h1>
+    <img src="{% static 'images/cliente.jpg' %}"/>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="{% url 'index' %}">{{ cliente.nome }}</a></td>
+                <td>{{ cliente.sobrenome }}</td>
+                <td>{{ cliente.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

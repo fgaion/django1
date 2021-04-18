@@ -12,6 +12,7 @@
     <img src="{% static 'images/django.png' %}"/>
     <h2> {{ curso }}</h2>
     <h3> {{ outro }}</h3>
+    <h3>PRODUTOS</h3>
     <table>
         <thead>
             <tr>
@@ -31,7 +32,27 @@
         </tbody>
     </table>
     <br>
-    <button onclick="teste();">Clique-me</button>
+    <h3>CLIENTES</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for cliente in clientes %}
+            <tr>
+                <td><a href="{% url 'cliente' cliente.id %}">{{ cliente.nome }}</a></td>
+                <td>{{ cliente.sobrenome }}</td>
+                <td>{{ cliente.email }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <button onclick="teste();">Clique Aqui</button>
     </center>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 
